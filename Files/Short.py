@@ -15,3 +15,19 @@ def print_center(message):
     # Draw the text
     screen.addstr(middle_row, x_position, message)
     screen.refresh()
+# Making the JOSN.
+def SetupInstall():
+    print("What programs do you want to install.\n")
+    OSINFO = input("Do you want to install OS Info [Y/N]: ")
+    AllPro = input("Do you want to install all the Programs? [Y/N]: ")
+    Data = {
+        "Programs": {
+            "All": AllPro,
+            "OS Info": OSINFO
+        },
+        "Self": {
+            "Runned": "Yes"
+        }
+    }
+    with open("Program.json", "w") as write_file:
+        json.dump(Data, write_file, indent=4)
