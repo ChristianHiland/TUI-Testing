@@ -6,5 +6,9 @@
     },
     "Self": {
         "Runned": "No"
+    },
+    "Paths": {
+        "JSON": "Not Set",
+        "PyKorean": "Not Set"
     }
 }

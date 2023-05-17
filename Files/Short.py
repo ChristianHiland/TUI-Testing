@@ -22,6 +22,14 @@ def SetupInstall():
     AllPro = input("Do you want to install all the Programs? [Y/N]: ")
     OSINFO = input("Do you want to install JSON Maker? [Y/N]: ")
     PyKoreanIn = input("Do you want to install PyKorean? [Y/N]: ")
+
+    # Getting the Paths.
+    print("\nWhat is the path that you want to install the JSON App? (Don't add the ~/ type the full path.)")
+    JSONPath = input("Path: ")
+    print("\nWhat is the path that you want to install the PyKorean App? (Don't add the ~/ type the full path.)")
+    JSONPath = input("Path: ")
+
+    # The Data tree.
     Data = {
         "Programs": {
             "All": AllPro,
@@ -30,6 +38,10 @@ def SetupInstall():
         },
         "Self": {
             "Runned": "Yes"
+        },
+        "Paths": {
+            "JSON": JSONPath,
+            "PyKorean": PyKoreanPath
         }
     }
     with open("Program.json", "w") as write_file:
