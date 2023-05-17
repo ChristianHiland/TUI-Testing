@@ -1,6 +1,7 @@
 # Importing The Modules.
 import time
 import curses
+import json
 
 def print_center(message):
     screen = curses.initscr()
@@ -18,8 +19,8 @@ def print_center(message):
 # Making the JOSN.
 def SetupInstall():
     print("What programs do you want to install.\n")
-    OSINFO = input("Do you want to install OS Info [Y/N]: ")
     AllPro = input("Do you want to install all the Programs? [Y/N]: ")
+    OSINFO = input("Do you want to install OS Info? [Y/N]: ")
     Data = {
         "Programs": {
             "All": AllPro,

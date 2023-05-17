@@ -4,7 +4,9 @@ import curses
 import os
 import json
 from Files import print_center
-from Programs import InfoRun, SetupInstall
+from Programs import InfoRun
+from Programs import Install
+from Files import SetupInstall
 
 # Main Area
 def main(stdscr):
@@ -13,7 +15,6 @@ def main(stdscr):
     # Making the Text and background colour.
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
-    curses.init_pair(3, curses.COLOR_BLACK, curses.COLOR_WHITE)
 
     # Printing "Starting The Programs."
     stdscr.attron(curses.color_pair(1))
@@ -26,7 +27,7 @@ def main(stdscr):
     stdscr.erase()
 
     # Running the InfoRun
-    #InfoRun(stdscr)
+    Install(stdscr)
 
     # Printing "Programs Started." 
     stdscr.attron(curses.color_pair(2))
@@ -35,7 +36,7 @@ def main(stdscr):
     stdscr.refresh()
     sleep(1)
 
-# Runs the main funcation.
+# Checks if the user had ran the program before
 with open("Program.json", "r") as checkRun:
     Data = json.load(checkRun)
     if Data['Self']['Runned'].lower() == str("yes"):
