@@ -1,2 +1,1 @@
-cd Data
-touch InstallLog.txt
+mkdir Data && cd Data && touch InstallLog.txt

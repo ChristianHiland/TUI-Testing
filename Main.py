@@ -33,7 +33,7 @@ def main(stdscr):
     print_center("Programs Installed")
     stdscr.attron(curses.color_pair(2))
     stdscr.refresh()
-    sleep(1)
+    sleep(2)
 
 # Checks if the user had ran the program before
 with open("Program.json", "r") as checkRun:

@@ -1,10 +1,10 @@
 {
     "Programs": {
-        "All": "Y",
-        "JSON": "Y",
-        "PyKorean": "Y"
+        "All": "",
+        "JSON": "",
+        "PyKorean": ""
     },
     "Self": {
-        "Runned": "Yes"
+        "Runned": ""
     }
 }

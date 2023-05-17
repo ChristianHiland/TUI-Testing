@@ -18,6 +18,7 @@ Log = "Data/InstallLog.txt"
 PyKoreanApp = "https://github.com/ChristianHiland/PyKorean/archive/refs/tags/v0.14.zip"
 
 def KoreanRun(stdscr):
+    TimeWait = 2
     # Making the curser not show.
     curses.curs_set(0)
     # Making the Text and background colour.
@@ -36,7 +37,7 @@ def KoreanRun(stdscr):
     with open(Log, "a") as Loging:
         Loging.write(DateWhole)
         Loging.write("Starting to install 'PyKorean.zip'.\n")
-    sleep(1)
+    sleep(TimeWait)
     
     # Clearing the screen and refreshing.
     stdscr.erase()
@@ -50,7 +51,7 @@ def KoreanRun(stdscr):
     with open(Log, "a") as Loging:
         Loging.write(DateWhole)
         Loging.write("'PyKorean.zip' was downloaded.\n")
-    sleep(0.5)
+    sleep(TimeWait)
 
     # Clearing the screen.
     stdscr.erase()
@@ -60,7 +61,7 @@ def KoreanRun(stdscr):
     print_center("Downloaded 'PyKorean.zip'")
     stdscr.attroff(curses.color_pair(2))
     stdscr.refresh()
-    sleep(1)
+    sleep(TimeWait)
 
     # Clearing the screen.
     stdscr.erase()

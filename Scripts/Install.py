@@ -31,14 +31,13 @@ def Install(stdscr):
         print_center("Checking the programs to install.")
         stdscr.attroff(curses.color_pair(1))
         stdscr.refresh()
-        sleep(1)
+        sleep(2)
 
         # Checking the JSON.
         if Data['Programs']['All'].lower() == str("y"):
             # Installing JSON Maker Info.
             JSONRun(stdscr)
             # Installing PyKorean.
-            JSONRun(stdscr)
             KoreanRun(stdscr)
             # Unzipping the files.
             UnzipFile = str("./Unzip.sh" + " " + Data['Programs']['All'])
