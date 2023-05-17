@@ -4,7 +4,6 @@ import curses
 import os
 import json
 from Files import print_center
-from Programs import InfoRun
 from Programs import Install
 from Files import SetupInstall
 
