@@ -39,9 +39,16 @@ def Install(stdscr):
             JSONRun(stdscr)
             # Installing PyKorean.
             KoreanRun(stdscr)
+            # Printing end.
+            stdscr.attron(curses.color_pair(2))
+            print_center("Unzipping Files")
+            stdscr.attroff(curses.color_pair(2))
+            stdscr.refresh()
             # Unzipping the files.
-            UnzipFile = str("./Unzip.sh" + " " + Data['Programs']['All'])
-            #system(UnzipFile)
+            system("./Unzip.sh")
+            # Clearing the screen and refreshing.
+            stdscr.erase()
+            stdscr.refresh()
         else:
             print("This was not runned!")
         # Clearing the screen.

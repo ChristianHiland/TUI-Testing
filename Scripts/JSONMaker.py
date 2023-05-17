@@ -39,7 +39,7 @@ def JSONRun(stdscr):
     with open(Log, "a") as Loging:
         Loging.write(DateWhole)
         Loging.write("Installing 'JSON.zip'.\n")
-    sleep(TimeWait)
+    sleep(1)
 
     # Clearing the screen and refreshing.
     stdscr.erase()
