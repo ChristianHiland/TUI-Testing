@@ -20,11 +20,11 @@ def print_center(message):
 def SetupInstall():
     print("What programs do you want to install.\n")
     AllPro = input("Do you want to install all the Programs? [Y/N]: ")
-    OSINFO = input("Do you want to install OS Info? [Y/N]: ")
+    OSINFO = input("Do you want to install JSON Maker? [Y/N]: ")
     Data = {
         "Programs": {
             "All": AllPro,
-            "OS Info": OSINFO
+            "JSON": OSINFO
         },
         "Self": {
             "Runned": "Yes"

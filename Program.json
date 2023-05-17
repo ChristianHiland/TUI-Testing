@@ -1,9 +1,9 @@
 {
     "Programs": {
-        "All": "",
-        "OS Info": ""
+        "All": "Y",
+        "JSON": "Y"
     },
     "Self": {
-        "Runned": "No"
+        "Runned": "Yes"
     }
 }

@@ -1,2 +1,2 @@
-from Programs.OS_Info import InfoRun
+from Programs.JSONMaker import JSONRun
 from Programs.Install import Install

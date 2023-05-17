@@ -3,7 +3,7 @@ from time import sleep
 import curses
 import json
 from Files import print_center
-from Programs import InfoRun
+from Programs import JSONRun
 
 def Install(stdscr):
     with open("Program.json", "r") as ProgramsInstall:
@@ -22,7 +22,14 @@ def Install(stdscr):
         stdscr.refresh()
         # Checking the JSON.
         if Data['Programs']['All'].lower() == str("y"):
-            InfoRun(stdscr)
+            # Installing JSON Maker Info.
+            JSONRun(stdscr)
+        elif Data['Programs']['All'].lower() == str("n"):
+            if Data['Programs']['JSON'].lower() == str("y"):
+                # Installing JSON Maker Info.
+                JSONRun(stdscr)
+            else:
+                print("No file was to be installed.")
         else:
             SetupInstall()
             curses.wrapper(main)
