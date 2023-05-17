@@ -21,10 +21,12 @@ def SetupInstall():
     print("What programs do you want to install.\n")
     AllPro = input("Do you want to install all the Programs? [Y/N]: ")
     OSINFO = input("Do you want to install JSON Maker? [Y/N]: ")
+    PyKoreanIn = input("Do you want to install PyKorean? [Y/N]: ")
     Data = {
         "Programs": {
             "All": AllPro,
-            "JSON": OSINFO
+            "JSON": OSINFO,
+            "PyKorean": PyKoreanIn
         },
         "Self": {
             "Runned": "Yes"

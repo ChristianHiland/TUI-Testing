@@ -1,7 +1,8 @@
 {
     "Programs": {
         "All": "Y",
-        "JSON": "Y"
+        "JSON": "Y",
+        "PyKorean": "Y"
     },
     "Self": {
         "Runned": "Yes"

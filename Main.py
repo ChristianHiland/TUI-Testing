@@ -4,7 +4,7 @@ import curses
 import os
 import json
 from Files import print_center
-from Programs import Install
+from Scripts import Install
 from Files import SetupInstall
 
 # Main Area
@@ -25,7 +25,7 @@ def main(stdscr):
     # Clearing the screen.
     stdscr.erase()
 
-    # Running the InfoRun
+    # Running the Install file.
     Install(stdscr)
 
     # Printing "Programs Started." 

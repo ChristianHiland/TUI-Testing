@@ -2,8 +2,9 @@
 from time import sleep
 import curses
 import json
+from os import system
 from Files import print_center
-from Programs import JSONRun
+from Scripts import JSONRun, PyKorean
 
 def Install(stdscr):
     with open("Program.json", "r") as ProgramsInstall:
@@ -20,20 +21,19 @@ def Install(stdscr):
         print_center("Checking the programs to install.")
         stdscr.attroff(curses.color_pair(1))
         stdscr.refresh()
+        sleep(1)
+
         # Checking the JSON.
         if Data['Programs']['All'].lower() == str("y"):
             # Installing JSON Maker Info.
             JSONRun(stdscr)
-        elif Data['Programs']['All'].lower() == str("n"):
-            if Data['Programs']['JSON'].lower() == str("y"):
-                # Installing JSON Maker Info.
-                JSONRun(stdscr)
-            else:
-                print("No file was to be installed.")
+            # Installing PyKorean.
+            JSONRun(stdscr)
+            PyKorean(stdscr)
+            # Unzipping the files.
+            UnzipFile = str("./Unzip.sh" + " " + Data['Programs']['All'])
+            system(UnzipFile)
         else:
-            SetupInstall()
-            curses.wrapper(main)
-
-        sleep(1)
+            print("This was not runned!")
         # Clearing the screen.
         stdscr.erase()

@@ -1,4 +1,4 @@
-import os
+# Importing The Modules.
 import platform
 from time import sleep
 import curses
@@ -13,7 +13,7 @@ now = datetime.now()
 today = date.today()
 DateToday = today.strftime("%B %d")
 DateTime = now.strftime("%H:%M")
-DateWhole = str("At " + DateTime + "on " + DateToday)
+DateWhole = str("At " + DateTime + " on " + DateToday + "\n")
 # Files Dirs
 Install_File = "Installed/JSON.zip"
 Log = "Data/InstallLog.txt"
@@ -23,6 +23,7 @@ JSONProgram = "https://github.com/ChristianHiland/Form-Testing/archive/refs/tags
 def JSONRun(stdscr):
     # Starting
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
     stdscr.erase()
     stdscr.refresh()
 
@@ -52,9 +53,9 @@ def JSONRun(stdscr):
     stdscr.refresh()
     
     # Downloading The Program.
-    stdscr.attron(curses.color_pair(1))
+    stdscr.attron(curses.color_pair(2))
     print_center("Downloading 'JSON.zip'")
-    stdscr.attroff(curses.color_pair(1))
+    stdscr.attroff(curses.color_pair(2))
     stdscr.refresh()
     filename, headers = urllib.request.urlretrieve(JSONProgram, filename=Install_File)
     with open(Log, "a") as Loging:
