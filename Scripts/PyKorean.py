@@ -17,15 +17,16 @@ Log = "Data/InstallLog.txt"
 # Program File.
 PyKoreanApp = "https://github.com/ChristianHiland/PyKorean/archive/refs/tags/v0.14.zip"
 
-def PyKoreanRun(stdscr):
+def KoreanRun(stdscr):
     # Making the curser not show.
     curses.curs_set(0)
     # Making the Text and background colour.
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
     
-    # Clearing the screen.
+    # Clearing the screen and refreshing.
     stdscr.erase()
+    stdscr.refresh()
     
     # Printing "Installing Programs"
     stdscr.attron(curses.color_pair(1))
@@ -37,7 +38,7 @@ def PyKoreanRun(stdscr):
         Loging.write("Starting to install 'PyKorean.zip'.\n")
     sleep(1)
     
-    # Clearing the screen.
+    # Clearing the screen and refreshing.
     stdscr.erase()
     
     # Printing the 'Downloading PyKorean' and downloading PyKorean.
@@ -48,18 +49,19 @@ def PyKoreanRun(stdscr):
     filename, headers = urllib.request.urlretrieve(PyKoreanApp, filename=Install_File)
     with open(Log, "a") as Loging:
         Loging.write(DateWhole)
-        Loging.write("PyKorean.zip was downloaded.\n")
+        Loging.write("'PyKorean.zip' was downloaded.\n")
     sleep(0.5)
 
     # Clearing the screen.
     stdscr.erase()
 
     # Printing end.
-    stdscr.attron(curses.color_pair(1))
+    stdscr.attron(curses.color_pair(2))
     print_center("Downloaded 'PyKorean.zip'")
-    stdscr.attroff(curses.color_pair(1))
+    stdscr.attroff(curses.color_pair(2))
     stdscr.refresh()
     sleep(1)
 
     # Clearing the screen.
     stdscr.erase()
+    return

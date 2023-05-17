@@ -1,5 +1,6 @@
 # Importing The Modules.
 import platform
+from os import system
 from time import sleep
 import curses
 from Files import print_center
@@ -24,43 +25,49 @@ def JSONRun(stdscr):
     # Starting
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
-    stdscr.erase()
-    stdscr.refresh()
-
-    # Making the folder, and printing the current progress.
-    stdscr.attron(curses.color_pair(1))
-    print_center("Making Data Folder")
-    stdscr.attroff(curses.color_pair(1))
-    stdscr.refresh()
-    os.system("mkdir Data")
-    sleep(1)
+    
+    # Clearing the screen and refreshing.
     stdscr.erase()
     stdscr.refresh()
 
     # Making the files, and putting the data in.
     stdscr.attron(curses.color_pair(1))
-    print_center("Adding Files to the 'Data' folder")
+    print_center("Installing 'JSON.zip'")
     stdscr.attroff(curses.color_pair(1))
     stdscr.refresh()
-    os.system("./DONTRUN.sh")
     with open(Log, "a") as Loging:
         Loging.write(DateWhole)
-        Loging.write("'Data' folder was made.\n")
-        Loging.write(DateWhole)
-        Loging.write("'InstallLog.txt' file was made.\n")
+        Loging.write("Installing 'JSON.zip'.\n")
     sleep(1)
+
+    # Clearing the screen and refreshing.
     stdscr.erase()
     stdscr.refresh()
     
     # Downloading The Program.
-    stdscr.attron(curses.color_pair(2))
+    stdscr.attron(curses.color_pair(1))
     print_center("Downloading 'JSON.zip'")
-    stdscr.attroff(curses.color_pair(2))
+    stdscr.attroff(curses.color_pair(1))
     stdscr.refresh()
     filename, headers = urllib.request.urlretrieve(JSONProgram, filename=Install_File)
     with open(Log, "a") as Loging:
         Loging.write(DateWhole)
         Loging.write("'JSON.zip' was downloaded.\n")
     sleep(1)
+
+    # Clearing the screen and refreshing.
     stdscr.erase()
     stdscr.refresh()
+    
+    # Printing end.
+    stdscr.attron(curses.color_pair(2))
+    print_center("Downloaded 'JSON.zip'")
+    stdscr.attroff(curses.color_pair(2))
+    stdscr.refresh()
+    sleep(1)
+
+    # Clearing the screen and refreshing.
+    stdscr.erase()
+    stdscr.refresh()
+    
+    return
