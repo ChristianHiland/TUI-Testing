@@ -21,7 +21,7 @@ Log = "Data/InstallLog.txt"
 JSONProgram = "https://github.com/ChristianHiland/Form-Testing/archive/refs/tags/v0.01.0.zip"
 
 def JSONRun(stdscr, JSONPath):
-    TimeWait = 2
+    TimeWait = 1
     InstallPath = str(JSONPath + "JSON.zip")
     WasInstalled = str("'JSON.zip' was downloaded at path: " + InstallPath + "\n")
     # Starting
