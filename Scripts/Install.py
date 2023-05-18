@@ -9,10 +9,10 @@ from Scripts import JSONRun, KoreanRun
 def Install(stdscr):
     with open("Program.json", "r") as ProgramsInstall:
         Data = json.load(ProgramsInstall)
+        # Program Paths
         JSONPath = Data['Paths']['JSON']
         PyKoreanPath = Data['Paths']['PyKorean']
-            
-
+        
         # Making the curser not show.
         curses.curs_set(0)
         # Making the Text and background colour.
@@ -20,34 +20,48 @@ def Install(stdscr):
         curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
         curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)
 
+        # Check if the paths exist, if they don't then exit the program.
         if path.exists(JSONPath) == False:
-            # Making the folder, and printing the current progress.
+            # Failed JSON
             stdscr.attron(curses.color_pair(3))
-            print_center("Oops The JSON path folder does not exist.")
+            print_center("Oops The JSON path that you entered does not exist.")
             stdscr.attroff(curses.color_pair(3))
             stdscr.erase()
             sleep(2)
             stdscr.refresh()
             if path.exists(PyKoreanPath) == False:
-                # Making the folder, and printing the current progress.
+                # Failed PyKorean
                 stdscr.attron(curses.color_pair(3))
-                print_center("Oops The PyKorean path folder does not exist.")
+                print_center("Oops The PyKorean path that you entered does not exist.")
                 stdscr.attroff(curses.color_pair(3))
                 stdscr.erase()
                 sleep(2)
                 stdscr.refresh()
-                return
+                # Failed Install
+                stdscr.attron(curses.color_pair(3))
+                print_center("Programs were not Installed")
+                stdscr.attroff(curses.color_pair(3))
+                stdscr.erase()
+                sleep(2)
+                stdscr.refresh()
+                quit()
         elif path.exists(PyKoreanPath) == False:
-            # Making the folder, and printing the current progress.
+            # Failed PyKorean
             stdscr.attron(curses.color_pair(3))
-            print_center("Oops The PyKorean path folder does not exist.")
+            print_center("Oops The PyKorean path that you entered does not exist.")
             stdscr.attroff(curses.color_pair(3))
             stdscr.erase()
             sleep(2)
             stdscr.refresh()
-            return
+            # Failed Install
+            stdscr.attron(curses.color_pair(3))
+            print_center("Programs were not Installed")
+            stdscr.attroff(curses.color_pair(3))
+            stdscr.erase()
+            sleep(2)
+            stdscr.refresh()
+            quit()
                 
-
 
         # Making the folder, and printing the current progress.
         stdscr.attron(curses.color_pair(1))
