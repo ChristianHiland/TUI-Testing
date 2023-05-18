@@ -14,9 +14,9 @@ DateWhole = str("At " + DateTime + " on " + DateToday + "\n")
 # File Dirs
 Log = "Data/InstallLog.txt"
 # Program File.
-PyKoreanApp = "https://github.com/ChristianHiland/PyKorean/archive/refs/tags/v0.14.zip"
+HTMLQuizApp = "https://github.com/ChristianHiland/HTML-Quiz/archive/refs/tags/v0.0.1.zip"
 
-def KoreanRun(stdscr, PyKoreanPath):
+def HTMLQuizRun(stdscr, HTMLQuizPath):
     TimeWait = 2
     InstallPath = str(PyKoreanPath + "PyKorean.zip")
     WasInstalled = str("'PyKorean.zip' was downloaded at path: " + InstallPath + "\n")

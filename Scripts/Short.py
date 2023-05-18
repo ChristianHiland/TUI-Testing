@@ -32,28 +32,35 @@ def print_center(message):
 def SetupInstall():
     print("What programs do you want to install.\n")
     AllPro = input("Do you want to install all the Programs? [Y/N]: ")
-    OSINFO = input("Do you want to install JSON Maker? [Y/N]: ")
-    PyKoreanIn = input("Do you want to install PyKorean? [Y/N]: ")
+    if AllPro.lower() == str("n"):
+        JSONIn = input("Do you want to install JSON Maker? [Y/N]: ")
+        PyKoreanIn = input("Do you want to install PyKorean? [Y/N]: ")
+        HTMLQuizIn = input("Do you want to install HTML Quiz? [Y/N]: ")
 
     # Getting the Paths.
+    print("\nI don't know what options you have chosed,\nso just leave the path of the programs blank if you didn't seclect it.\n")
     print("\nWhat is the path that you want to install the JSON App? (Don't add the ~/ type the full path.)")
     JSONPath = input("Path: ")
     print("\nWhat is the path that you want to install the PyKorean App? (Don't add the ~/ type the full path.)")
     PyKoreanPath = input("Path: ")
+    print("\nWhat is the path that you want to install the HTML Quiz App? (Don't add the ~/ type the full path.)")
+    HTMLQuizPath = input("Path: ")
 
     # The Data tree.
     Data = {
         "Programs": {
             "All": AllPro,
-            "JSON": OSINFO,
-            "PyKorean": PyKoreanIn
+            "JSON": JSONIn,
+            "PyKorean": PyKoreanIn,
+            "HTMLQuiz": HTMLQuizIn
         },
         "Self": {
             "Runned": "Yes"
         },
         "Paths": {
             "JSON": JSONPath,
-            "PyKorean": PyKoreanPath
+            "PyKorean": PyKoreanPath,
+            "HTMLQuiz": HTMLQuizPath
         }
     }
     with open("Program.json", "w") as write_file:

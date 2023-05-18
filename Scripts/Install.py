@@ -3,8 +3,8 @@ from time import sleep
 import curses
 import json
 from os import system, mkdir, path
-from Files import print_center, MakeDir, MakeDirectory
-from Scripts import JSONRun, KoreanRun
+from Scripts import print_center, MakeDir, MakeDirectory
+from Scripts import JSONRun, KoreanRun, HTMLQuizRun
 
 def Install(stdscr):
     with open("Program.json", "r") as ProgramsInstall:
@@ -12,6 +12,7 @@ def Install(stdscr):
         # Program Paths
         JSONPath = Data['Paths']['JSON']
         PyKoreanPath = Data['Paths']['PyKorean']
+        HTMLQuizPath = Data['Paths']['HTMLQuiz']
         
         # Making the curser not show.
         curses.curs_set(0)
@@ -30,6 +31,13 @@ def Install(stdscr):
             sleep(2)
             stdscr.refresh()
             MakeDirectory(MakeDir(JSONPath))
+
+            stdscr.attron(curses.color_pair(2))
+            print_center("The path was made.")
+            stdscr.attroff(curses.color_pair(2))
+            stdscr.erase()
+            sleep(2)
+            stdscr.refresh()
             if path.exists(PyKoreanPath) == False:
                 # Failed PyKorean
                 stdscr.attron(curses.color_pair(3))
@@ -38,14 +46,15 @@ def Install(stdscr):
                 stdscr.erase()
                 sleep(2)
                 stdscr.refresh()
-                # Failed Install
-                stdscr.attron(curses.color_pair(3))
-                print_center("Programs were not Installed")
-                stdscr.attroff(curses.color_pair(3))
+                MakeDirectory(MakeDir(PyKoreanPath))
+
+                # Printing saying that the folder was made
+                stdscr.attron(curses.color_pair(2))
+                print_center("The path was made.")
+                stdscr.attroff(curses.color_pair(2))
                 stdscr.erase()
                 sleep(2)
                 stdscr.refresh()
-                quit()
         elif path.exists(PyKoreanPath) == False:
             # Failed PyKorean
             stdscr.attron(curses.color_pair(3))
@@ -54,6 +63,16 @@ def Install(stdscr):
             stdscr.erase()
             sleep(2)
             stdscr.refresh()
+            MakeDirectory(MakeDir(PyKoreanPath))
+
+            # Printing saying that the folder was made
+            stdscr.attron(curses.color_pair(2))
+            print_center("The path was made.")
+            stdscr.attroff(curses.color_pair(2))
+            stdscr.erase()
+            sleep(2)
+            stdscr.refresh()
+        else:
             # Failed Install
             stdscr.attron(curses.color_pair(3))
             print_center("Programs were not Installed")
@@ -88,6 +107,8 @@ def Install(stdscr):
             JSONRun(stdscr, JSONPath)
             # Installing PyKorean.
             KoreanRun(stdscr, PyKoreanPath)
+            # Installing HTML Quiz
+            HTMLQuizRun(stdscr, HTMLQuizPath)
             # Printing end.
             stdscr.attron(curses.color_pair(2))
             print_center("Unzipping Files")

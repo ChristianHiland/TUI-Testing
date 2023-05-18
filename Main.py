@@ -3,9 +3,9 @@ from time import sleep
 import curses
 import os
 import json
-from Files import print_center
+from Scripts import print_center
 from Scripts import Install
-from Files import SetupInstall
+from Scripts import SetupInstall
 
 # Main Area
 def main(stdscr):
