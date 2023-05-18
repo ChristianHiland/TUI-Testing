@@ -1,5 +1,5 @@
 # Checking the option for installing All
-if [ $4 == "y" ]; then
+if [ $4 -eq "y" ]; then
     # Going to the folder that has the JSON.zip file, and unzipping the zip file.
     cd $1 && unzip -q JSON.zip && rm JSON.zip
     # Going to the folder that has the PyKorean.zip file, and unzipping the zip file.
