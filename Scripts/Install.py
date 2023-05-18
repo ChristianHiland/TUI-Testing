@@ -18,10 +18,10 @@ def Install(stdscr):
 
          # Making the folder, and printing the current progress.
         stdscr.attron(curses.color_pair(1))
-        print_center("Running 'DONTRUN.sh'")
+        print_center("Running 'FolderMake.sh'")
         stdscr.attroff(curses.color_pair(1))
         stdscr.refresh()
-        system("./DONTRUN.sh")
+        system("sh Scripts/FolderMake.sh")
         sleep(2)
         stdscr.erase()
         stdscr.refresh()
@@ -45,7 +45,7 @@ def Install(stdscr):
             stdscr.attroff(curses.color_pair(2))
             stdscr.refresh()
             # Unzipping the files.
-            system("./Unzip.sh")
+            system("sh Scripts/Unzip.sh")
             # Clearing the screen and refreshing.
             stdscr.erase()
             stdscr.refresh()
