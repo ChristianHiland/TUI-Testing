@@ -21,7 +21,7 @@ def Install(stdscr):
         print_center("Running 'FolderMake.sh'")
         stdscr.attroff(curses.color_pair(1))
         stdscr.refresh()
-        system("sh Scripts/FolderMake.sh")
+        system("./Scripts/FolderMake.sh")
         sleep(2)
         stdscr.erase()
         stdscr.refresh()
@@ -45,7 +45,7 @@ def Install(stdscr):
             stdscr.attroff(curses.color_pair(2))
             stdscr.refresh()
             # Unzipping the files.
-            system("sh Scripts/Unzip.sh")
+            system("./Scripts/Unzip.sh")
             # Clearing the screen and refreshing.
             stdscr.erase()
             stdscr.refresh()

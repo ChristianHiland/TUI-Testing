@@ -1,14 +1,14 @@
 {
     "Programs": {
-        "All": "",
-        "JSON": "",
-        "PyKorean": ""
+        "All": "Y",
+        "JSON": "Y",
+        "PyKorean": "Y"
     },
     "Self": {
-        "Runned": "No"
+        "Runned": "Yes"
     },
     "Paths": {
-        "JSON": "Not Set",
-        "PyKorean": "Not Set"
+        "JSON": "/home/lunbin/Apps/",
+        "PyKorean": "/home/lunbin/Apps/"
     }
 }

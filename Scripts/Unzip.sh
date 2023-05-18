@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Going to the Installed folder.
 cd .. && cd Installed
 # Unzipping JSON into the JSON folder in the installed folder.

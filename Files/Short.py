@@ -27,7 +27,7 @@ def SetupInstall():
     print("\nWhat is the path that you want to install the JSON App? (Don't add the ~/ type the full path.)")
     JSONPath = input("Path: ")
     print("\nWhat is the path that you want to install the PyKorean App? (Don't add the ~/ type the full path.)")
-    JSONPath = input("Path: ")
+    PyKoreanPath = input("Path: ")
 
     # The Data tree.
     Data = {
