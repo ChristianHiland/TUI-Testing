@@ -2,7 +2,7 @@
 from time import sleep
 import curses
 import json
-from os import system
+from os import system, mkdir
 from Files import print_center
 from Scripts import JSONRun, KoreanRun
 
@@ -21,7 +21,7 @@ def Install(stdscr):
         print_center("Running 'FolderMake.sh'")
         stdscr.attroff(curses.color_pair(1))
         stdscr.refresh()
-        system("./Scripts/FolderMake.sh")
+        system("./FolderMake.sh")
         sleep(2)
         stdscr.erase()
         stdscr.refresh()
@@ -35,20 +35,27 @@ def Install(stdscr):
 
         # Checking the JSON.
         if Data['Programs']['All'].lower() == str("y"):
+            JSONPath = Data['Paths']['JSON']
+            PyKoreanPath = Data['Paths']['PyKorean']
+            mkdir(JSONPath)
+            mddir(PyKoreanPath)
+
             # Installing JSON Maker Info.
-            JSONRun(stdscr)
+            JSONRun(stdscr, JSONPath)
             # Installing PyKorean.
-            KoreanRun(stdscr)
+            KoreanRun(stdscr, PyKoreanPath)
             # Printing end.
             stdscr.attron(curses.color_pair(2))
             print_center("Unzipping Files")
             stdscr.attroff(curses.color_pair(2))
             stdscr.refresh()
             # Unzipping the files.
-            system("./Scripts/Unzip.sh")
+            UnzipCMD = str("./Unzip.sh" + " " + JSONPath + " " + PyKoreanPath)
+            system(UnzipCMD)
             # Clearing the screen and refreshing.
             stdscr.erase()
             stdscr.refresh()
+            sleep(2)
         else:
             print("This was not runned!")
         # Clearing the screen.

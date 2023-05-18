@@ -12,13 +12,14 @@ DateToday = today.strftime("%B %d")
 DateTime = now.strftime("%H:%M")
 DateWhole = str("At " + DateTime + " on " + DateToday + "\n")
 # File Dirs
-Install_File = "Installed/PyKorean.zip"
 Log = "Data/InstallLog.txt"
 # Program File.
 PyKoreanApp = "https://github.com/ChristianHiland/PyKorean/archive/refs/tags/v0.14.zip"
 
-def KoreanRun(stdscr):
+def KoreanRun(stdscr, PyKoreanPath):
     TimeWait = 2
+    InstallPath = str(PyKoreanPath + "PyKorean.zip")
+    WasInstalled = str("'PyKorean.zip' was downloaded at path: " + InstallPath + "\n")
     # Making the curser not show.
     curses.curs_set(0)
     # Making the Text and background colour.
@@ -36,7 +37,7 @@ def KoreanRun(stdscr):
     stdscr.refresh()
     with open(Log, "a") as Loging:
         Loging.write(DateWhole)
-        Loging.write("Starting to install 'PyKorean.zip'.\n")
+        Loging.write("Installing 'PyKorean.zip'.\n")
     sleep(1)
     
     # Clearing the screen and refreshing.
@@ -50,7 +51,7 @@ def KoreanRun(stdscr):
     filename, headers = urllib.request.urlretrieve(PyKoreanApp, filename=Install_File)
     with open(Log, "a") as Loging:
         Loging.write(DateWhole)
-        Loging.write("'PyKorean.zip' was downloaded.\n")
+        Loging.write(WasInstalled)
     sleep(TimeWait)
 
     # Clearing the screen.
