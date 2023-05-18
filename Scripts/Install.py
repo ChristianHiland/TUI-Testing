@@ -2,21 +2,54 @@
 from time import sleep
 import curses
 import json
-from os import system, mkdir
+from os import system, mkdir, path
 from Files import print_center
 from Scripts import JSONRun, KoreanRun
 
 def Install(stdscr):
     with open("Program.json", "r") as ProgramsInstall:
         Data = json.load(ProgramsInstall)
+        JSONPath = Data['Paths']['JSON']
+        PyKoreanPath = Data['Paths']['PyKorean']
+            
 
         # Making the curser not show.
         curses.curs_set(0)
         # Making the Text and background colour.
         curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
         curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
+        curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)
 
-         # Making the folder, and printing the current progress.
+        if path.exists(JSONPath) == False:
+            # Making the folder, and printing the current progress.
+            stdscr.attron(curses.color_pair(3))
+            print_center("Oops The JSON path folder does not exist.")
+            stdscr.attroff(curses.color_pair(3))
+            stdscr.erase()
+            sleep(2)
+            stdscr.refresh()
+            if path.exists(PyKoreanPath) == False:
+                # Making the folder, and printing the current progress.
+                stdscr.attron(curses.color_pair(3))
+                print_center("Oops The PyKorean path folder does not exist.")
+                stdscr.attroff(curses.color_pair(3))
+                stdscr.erase()
+                sleep(2)
+                stdscr.refresh()
+                return
+        elif path.exists(PyKoreanPath) == False:
+            # Making the folder, and printing the current progress.
+            stdscr.attron(curses.color_pair(3))
+            print_center("Oops The PyKorean path folder does not exist.")
+            stdscr.attroff(curses.color_pair(3))
+            stdscr.erase()
+            sleep(2)
+            stdscr.refresh()
+            return
+                
+
+
+        # Making the folder, and printing the current progress.
         stdscr.attron(curses.color_pair(1))
         print_center("Running 'FolderMake.sh'")
         stdscr.attroff(curses.color_pair(1))
@@ -35,10 +68,6 @@ def Install(stdscr):
 
         # Checking the JSON.
         if Data['Programs']['All'].lower() == str("y"):
-            JSONPath = Data['Paths']['JSON']
-            PyKoreanPath = Data['Paths']['PyKorean']
-            mkdir(JSONPath)
-            mddir(PyKoreanPath)
 
             # Installing JSON Maker Info.
             JSONRun(stdscr, JSONPath)

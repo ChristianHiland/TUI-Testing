@@ -8,7 +8,7 @@
         "Runned": "Yes"
     },
     "Paths": {
-        "JSON": "/home/lunbin/Apps/",
-        "PyKorean": "/home/lunbin/Apps/"
+        "JSON": "Apps/JSON/",
+        "PyKorean": "Apps/PyKorean/"
     }
 }
