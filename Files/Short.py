@@ -2,6 +2,18 @@
 import time
 import curses
 import json
+import os
+
+def MakeDir(directory):
+    external_path = os.path.abspath(directory)
+    return external_path
+def MakeDirectoryP(directory_path):
+    os.makedirs(directory_path, exist_ok=True)
+def MakeDirectory(directory_name):
+    home_directory = os.path.expanduser("~")
+    directory_path = os.path.join(home_directory, directory_name)
+    os.makedirs(directory_path, exist_ok=True)
+    print(f"Directory '{directory_path}' created successfully.")
 
 def print_center(message):
     screen = curses.initscr()

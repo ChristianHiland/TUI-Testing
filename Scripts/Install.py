@@ -3,7 +3,7 @@ from time import sleep
 import curses
 import json
 from os import system, mkdir, path
-from Files import print_center
+from Files import print_center, MakeDir, MakeDirectory
 from Scripts import JSONRun, KoreanRun
 
 def Install(stdscr):
@@ -29,6 +29,7 @@ def Install(stdscr):
             stdscr.erase()
             sleep(2)
             stdscr.refresh()
+            MakeDirectory(MakeDir(JSONPath))
             if path.exists(PyKoreanPath) == False:
                 # Failed PyKorean
                 stdscr.attron(curses.color_pair(3))
