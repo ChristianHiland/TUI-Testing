@@ -4,7 +4,7 @@ import curses
 import json
 from os import system, mkdir, path
 from Scripts import print_center, MakeDir, MakeDirectory
-from Scripts import JSONRun, KoreanRun, HTMLQuizRun
+from Scripts import JSONRun, KoreanRun, LearningWebRun
 
 def Install(stdscr):
     with open("Program.json", "r") as ProgramsInstall:
@@ -12,7 +12,11 @@ def Install(stdscr):
         # Program Paths
         JSONPath = Data['Paths']['JSON']
         PyKoreanPath = Data['Paths']['PyKorean']
-        HTMLQuizPath = Data['Paths']['HTMLQuiz']
+        LearningWebPath = Data['Paths']['LearningWeb']
+        AllIN = Data['Programs']['All'].lower()
+        JSONIN = Data['Programs']['JSON'].lower()
+        PyKoreanIN = Data['Programs']['JSON'].lower()
+        LearningWebIN = Data['Programs']['JSON'].lower()
         
         # Making the curser not show.
         curses.curs_set(0)
@@ -38,24 +42,7 @@ def Install(stdscr):
             stdscr.erase()
             sleep(2)
             stdscr.refresh()
-            if path.exists(PyKoreanPath) == False:
-                # Failed PyKorean
-                stdscr.attron(curses.color_pair(3))
-                print_center("Oops The PyKorean path that you entered does not exist.")
-                stdscr.attroff(curses.color_pair(3))
-                stdscr.erase()
-                sleep(2)
-                stdscr.refresh()
-                MakeDirectory(MakeDir(PyKoreanPath))
-
-                # Printing saying that the folder was made
-                stdscr.attron(curses.color_pair(2))
-                print_center("The path was made.")
-                stdscr.attroff(curses.color_pair(2))
-                stdscr.erase()
-                sleep(2)
-                stdscr.refresh()
-        elif path.exists(PyKoreanPath) == False:
+        if path.exists(PyKoreanPath) == False:
             # Failed PyKorean
             stdscr.attron(curses.color_pair(3))
             print_center("Oops The PyKorean path that you entered does not exist.")
@@ -72,16 +59,24 @@ def Install(stdscr):
             stdscr.erase()
             sleep(2)
             stdscr.refresh()
-        else:
-            # Failed Install
+        if path.exists(LearningWebPath) == False:
+            # Failed PyKorean
             stdscr.attron(curses.color_pair(3))
-            print_center("Programs were not Installed")
+            print_center("Oops The Learning Web path that you entered does not exist.")
             stdscr.attroff(curses.color_pair(3))
             stdscr.erase()
             sleep(2)
             stdscr.refresh()
-            quit()
-                
+            MakeDirectory(MakeDir(LearningWebPath))
+
+            # Printing saying that the folder was made
+            stdscr.attron(curses.color_pair(2))
+            print_center("The path was made.")
+            stdscr.attroff(curses.color_pair(2))
+            stdscr.erase()
+            sleep(2)
+            stdscr.refresh()
+        
 
         # Making the folder, and printing the current progress.
         stdscr.attron(curses.color_pair(1))
@@ -89,7 +84,7 @@ def Install(stdscr):
         stdscr.attroff(curses.color_pair(1))
         stdscr.refresh()
         system("./FolderMake.sh")
-        sleep(2)
+        sleep(1)
         stdscr.erase()
         stdscr.refresh()
 
@@ -101,28 +96,38 @@ def Install(stdscr):
         sleep(2)
 
         # Checking the JSON.
-        if Data['Programs']['All'].lower() == str("y"):
+        if Data['Programs']['All'].lower() != str("y"):
+            if Data['Programs']['JSON'].lower() == str("y"):
+                # Code for JSON
+                JSONRun(stdscr, JSONPath)
+            elif Data['Programs']['PyKorean'].lower() == str("y"):
+                # Code for PyKorean
+                KoreanRun(stdscr, PyKoreanPath)
+            elif Data['Programs']['LearningWeb'].lower() == str("y"):
+                # Code for HTML Quiz
+                LearningWebRun(stdscr, LearningWebPath)
+            else:
+                # Code for other entries
+                print("Oops you didn't put anything!")
+                quit()
 
-            # Installing JSON Maker Info.
+        elif Data['Programs']['All'].lower() == str("y"):
             JSONRun(stdscr, JSONPath)
-            # Installing PyKorean.
             KoreanRun(stdscr, PyKoreanPath)
-            # Installing HTML Quiz
-            HTMLQuizRun(stdscr, HTMLQuizPath)
-            # Printing end.
-            stdscr.attron(curses.color_pair(2))
-            print_center("Unzipping Files")
-            stdscr.attroff(curses.color_pair(2))
-            stdscr.refresh()
-            # Unzipping the files.
-            UnzipCMD = str("./Unzip.sh" + " " + JSONPath + " " + PyKoreanPath)
-            system(UnzipCMD)
-            # Clearing the screen and refreshing.
-            stdscr.erase()
-            stdscr.refresh()
-            sleep(2)
-        else:
-            print("This was not runned!")
+            LearningWebRun(stdscr, LearningWebPath)
+
+        # Printing end.
+        stdscr.attron(curses.color_pair(2))
+        print_center("Unzipping Files")
+        stdscr.attroff(curses.color_pair(2))
+        stdscr.refresh()
+        # Unzipping the files.
+        UnzipCMD = str("./Unzip.sh" +" "+ JSONPath +" "+ PyKoreanPath +" "+ LearningWebPath +" "+ AllIN +" "+ JSONIN +" "+ PyKoreanIN +" "+ LearningWebIN)
+        system(UnzipCMD)
+        # Clearing the screen and refreshing.
+        stdscr.erase()
+        stdscr.refresh()
+        sleep(2)
         # Clearing the screen.
         stdscr.erase()
     return

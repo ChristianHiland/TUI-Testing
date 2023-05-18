@@ -7,8 +7,6 @@ import os
 def MakeDir(directory):
     external_path = os.path.abspath(directory)
     return external_path
-def MakeDirectoryP(directory_path):
-    os.makedirs(directory_path, exist_ok=True)
 def MakeDirectory(directory_name):
     home_directory = os.path.expanduser("~")
     directory_path = os.path.join(home_directory, directory_name)
@@ -32,10 +30,13 @@ def print_center(message):
 def SetupInstall():
     print("What programs do you want to install.\n")
     AllPro = input("Do you want to install all the Programs? [Y/N]: ")
+    JSONIn = "y"
+    PyKoreanIn = "y"
+    LearningWebIn = "y"
     if AllPro.lower() == str("n"):
         JSONIn = input("Do you want to install JSON Maker? [Y/N]: ")
         PyKoreanIn = input("Do you want to install PyKorean? [Y/N]: ")
-        HTMLQuizIn = input("Do you want to install HTML Quiz? [Y/N]: ")
+        LearningWebIn = input("Do you want to install Learning Web? [Y/N]: ")
 
     # Getting the Paths.
     print("\nI don't know what options you have chosed,\nso just leave the path of the programs blank if you didn't seclect it.\n")
@@ -43,8 +44,8 @@ def SetupInstall():
     JSONPath = input("Path: ")
     print("\nWhat is the path that you want to install the PyKorean App? (Don't add the ~/ type the full path.)")
     PyKoreanPath = input("Path: ")
-    print("\nWhat is the path that you want to install the HTML Quiz App? (Don't add the ~/ type the full path.)")
-    HTMLQuizPath = input("Path: ")
+    print("\nWhat is the path that you want to install the Learning Web App? (Don't add the ~/ type the full path.)")
+    LearningWebPath = input("Path: ")
 
     # The Data tree.
     Data = {
@@ -52,7 +53,7 @@ def SetupInstall():
             "All": AllPro,
             "JSON": JSONIn,
             "PyKorean": PyKoreanIn,
-            "HTMLQuiz": HTMLQuizIn
+            "LearningWeb": LearningWebIn
         },
         "Self": {
             "Runned": "Yes"
@@ -60,7 +61,7 @@ def SetupInstall():
         "Paths": {
             "JSON": JSONPath,
             "PyKorean": PyKoreanPath,
-            "HTMLQuiz": HTMLQuizPath
+            "LearningWeb": LearningWebPath
         }
     }
     with open("Program.json", "w") as write_file:

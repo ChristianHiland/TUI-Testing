@@ -1,14 +1,16 @@
 {
     "Programs": {
-        "All": "",
-        "JSON": "",
-        "PyKorean": ""
+        "All": "Y",
+        "JSON": "y",
+        "PyKorean": "y",
+        "LearningWeb": "y"
     },
     "Self": {
-        "Runned": "No"
+        "Runned": "Yes"
     },
     "Paths": {
-        "JSON": "",
-        "PyKorean": ""
+        "JSON": "Apps/JSON/",
+        "PyKorean": "Apps/PyKorean/",
+        "LearningWeb": "Apps/LearningWeb/"
     }
 }

@@ -3,7 +3,7 @@ import platform
 from os import system
 from time import sleep
 import curses
-from Files import print_center
+from Scripts import print_center
 from datetime import date, datetime
 import urllib.request
 

@@ -17,7 +17,7 @@ Log = "Data/InstallLog.txt"
 PyKoreanApp = "https://github.com/ChristianHiland/PyKorean/archive/refs/tags/v0.14.zip"
 
 def KoreanRun(stdscr, PyKoreanPath):
-    TimeWait = 2
+    TimeWait = 1
     InstallPath = str(PyKoreanPath + "PyKorean.zip")
     WasInstalled = str("'PyKorean.zip' was downloaded at path: " + InstallPath + "\n")
     # Making the curser not show.
@@ -48,7 +48,7 @@ def KoreanRun(stdscr, PyKoreanPath):
     print_center("Downloading 'PyKorean.zip'")
     stdscr.attroff(curses.color_pair(1))
     stdscr.refresh()
-    filename, headers = urllib.request.urlretrieve(PyKoreanApp, filename=Install_File)
+    filename, headers = urllib.request.urlretrieve(PyKoreanApp, filename=InstallPath)
     with open(Log, "a") as Loging:
         Loging.write(DateWhole)
         Loging.write(WasInstalled)
